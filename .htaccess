@@ -1,0 +1,22 @@
+RewriteEngine On
+
+# Admin panel routing
+RewriteRule ^admin/?$ admin/index.php [L]
+RewriteRule ^admin/login/?$ admin/login.php [L]
+
+# Prevent direct access to config files
+<Files "config/*">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# Prevent access to sensitive files
+<Files "*.sql">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+<Files "admin_setup.php">
+    Order Allow,Deny
+    Deny from all
+</Files>
